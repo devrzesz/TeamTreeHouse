@@ -5,11 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Treehouse.AspNetCore.Models;
+using Treehouse.AspNetCore.Services;
 
 namespace Treehouse.AspNetCore.Controllers
 {
     public class HomeController : Controller
     {
+        private ITestService testService = null;
+
+        public HomeController(ITestService testService)
+        {
+            this.testService = testService;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -17,7 +25,7 @@ namespace Treehouse.AspNetCore.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = testService.GetAboutContent();
 
             return View();
         }

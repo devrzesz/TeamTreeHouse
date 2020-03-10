@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Treehouse.AspNetCore.Services
 {
-    public class TestService
+    public class TestService : ITestService
     {
 
         public string GetAboutContent()
